@@ -237,29 +237,3 @@ html.a11y-stop-anim *::after {
     scroll-behavior: auto !important;
 }
 
-/*
-   CSS מותאם אישית לתיקון היפוך 3D (חייב להיות גלובלי)
-*/
-
-.flip-card-container {
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    /* מאפשר לילדים (חזית וגב) למקם את עצמם במרחב 3D */
-    transform-style: preserve-3d; 
-}
-
-.flip-card-face {
-    /* מונע מהגב לצפות דרך החזית */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* תמיכה בדפדפנים ישנים יותר */
-}
-
-/* הגדרת מצב התחלתי של גב הכרטיס */
-.flip-card-back {
-    /* מיקום גב הכרטיס מאחורי החזית */
-    transform: rotateY(180deg);
-}
-
-/* סיום הוספת CSS */

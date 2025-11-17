@@ -60,66 +60,72 @@ export default function AccessibilityWidget() {
 
     return (
         <>
-            <button
-                ref={btnRef}
-                type="button"
-                aria-haspopup="true"
-                aria-expanded={open}
-                aria-controls="a11y-panel"
-                className="a11y-fab"
-                onClick={() => setOpen(v => !v)}
+            <div
+                className="fixed bottom-[20px] right-[20px] z-50" // 👈 אלו הקלאסים שצריך לתקן
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="white"
+                <button
+                    ref={btnRef}
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={open}
+                    aria-controls="a11y-panel"
+                    className="a11y-fab"
+                    onClick={() => setOpen(v => !v)}
                 >
-                    <path d="M12 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1 4h-2v7h6v7h2v-9h-6V6zM7 20a5 5 0 0 1 0-10h1v2H7a3 3 0 0 0 0 6 3 3 0 0 0 2.82-2h2.05A5.001 5.001 0 0 1 7 20z" />
-                </svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="white"
+                    >
+                        <path d="M12 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1 4h-2v7h6v7h2v-9h-6V6zM7 20a5 5 0 0 1 0-10h1v2H7a3 3 0 0 0 0 6 3 3 0 0 0 2.82-2h2.05A5.001 5.001 0 0 1 7 20z" />
+                    </svg>
 
-            </button>
-            {open && (
-                <div
-                    ref={panelRef}
-                    id="a11y-panel"
-                    className="a11y-panel"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="Accessibility settings"
-                >
-                    <header className="a11y-panel__hdr">
-                        <strong>תפריט נגישות</strong>
-                        <button className="a11y-close" onClick={() => setOpen(false)} aria-label="Close">×</button>
-                    </header>
+                </button>
+            </div>
+            {
+                open && (
+                    <div
+                        ref={panelRef}
+                        id="a11y-panel"
+                        className="a11y-panel"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Accessibility settings"
+                    >
+                        <header className="a11y-panel__hdr">
+                            <strong>תפריט נגישות</strong>
+                            <button className="a11y-close" onClick={() => setOpen(false)} aria-label="Close">×</button>
+                        </header>
 
-                    <ul className="a11y-list">
-                        {OPTIONS.map(opt => (
-                            <li key={opt.key}>
-                                <label className="a11y-row">
-                                    <input
-                                        type="checkbox"
-                                        checked={!!prefs[opt.key]}
-                                        onChange={() => togglePref(opt.key, opt.cls)}
-                                    />
-                                    <span>{opt.label}</span>
-                                </label>
-                            </li>
-                        ))}
-                    </ul>
+                        <ul className="a11y-list">
+                            {OPTIONS.map(opt => (
+                                <li key={opt.key}>
+                                    <label className="a11y-row">
+                                        <input
+                                            type="checkbox"
+                                            checked={!!prefs[opt.key]}
+                                            onChange={() => togglePref(opt.key, opt.cls)}
+                                        />
+                                        <span>{opt.label}</span>
+                                    </label>
+                                </li>
+                            ))}
+                        </ul>
 
-                    <div className="a11y-actions">
-                        <button className="a11y-reset" onClick={resetAll} aria-label="Reset accessibility">
-                           אפס הגדרות
-                        </button>
+                        <div className="a11y-actions">
+                            <button className="a11y-reset" onClick={resetAll} aria-label="Reset accessibility">
+                                אפס הגדרות
+                            </button>
+                        </div>
+
+                        <p className="a11y-note" aria-live="polite">
+                            ההעדפות נשמרות לביקור הבא שלך
+                        </p>
                     </div>
-
-                    <p className="a11y-note" aria-live="polite">
-                       ההעדפות נשמרות לביקור הבא שלך
-                    </p>
-                </div>
-            )}
+                )
+            }
         </>
     );
 }

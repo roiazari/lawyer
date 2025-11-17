@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(12px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out;
+  }
+
+  .animate-scroll {
+    animation: scroll 1.5s ease-in-out infinite;
+  }
+}
+
+
+
+/* --- קלאסים המשמשים את הקומפוננטה --- */
+.a11y-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 18px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1e88e5;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.a11y-fab:focus {
+    outline: 3px solid #ffd54f;
+    outline-offset: 2px;
+}
+
+/* פאנל ההגדרות */
+.a11y-panel {
+    position: fixed;
+    bottom: 82px;
+    right: 18px;
+    width: 280px;
+    max-height: 70vh;
+    overflow: auto;
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+    z-index: 9999;
+    direction: ltr;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.a11y-panel__hdr {
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    background: #f7f7f7;
+}
+
+.a11y-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.a11y-list {
+    direction: rtl;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+}
+
+.a11y-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.a11y-actions {
+    padding: 8px 12px 14px;
+    border-top: 1px solid #eee;
+}
+
+.a11y-reset {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+.a11y-note {
+    direction: rtl;
+    font-size: 0.8rem;
+    color: #666;
+    padding: 0 12px 12px;
+}
+
+/* ===========================
+   קלאסים המוחלים גלובלית על <html>
+   =========================== */
+
+html.a11y-large-text {
+    font-size: 110%;
+}
+
+html.a11y-xlarge-text {
+    font-size: 120%;
+}
+
+html.a11y-readable-font,
+html.a11y-readable-font * {
+    font-family: Arial, Helvetica, "Noto Sans", sans-serif !important;
+}
+
+html.a11y-contrast {
+    filter: contrast(1.15);
+    --a11y-bg: #000;
+    --a11y-fg: #fff;
+}
+
+html.a11y-contrast body {
+    background: var(--a11y-bg) !important;
+    color: var(--a11y-fg) !important;
+}
+
+html.a11y-contrast a {
+    color: #ffeb3b !important;
+}
+
+html.a11y-grayscale {
+    filter: grayscale(1);
+}
+
+html.a11y-invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+html.a11y-invert img,
+html.a11y-invert video {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* מתקנים מדיה */
+
+html.a11y-underline-links a,
+html.a11y-underline-links a * {
+    text-decoration: underline !important;
+}
+
+html.a11y-highlight-links a {
+    outline: 2px solid #ff9800 !important;
+    background: #fff3cd !important;
+}
+
+/* הפסקת אנימציות והבהובים */
+html.a11y-stop-anim *,
+html.a11y-stop-anim *::before,
+html.a11y-stop-anim *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+/*
+   CSS מותאם אישית לתיקון היפוך 3D (חייב להיות גלובלי)
+*/
+
+.flip-card-container {
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    /* מאפשר לילדים (חזית וגב) למקם את עצמם במרחב 3D */
+    transform-style: preserve-3d; 
+}
+
+.flip-card-face {
+    /* מונע מהגב לצפות דרך החזית */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* תמיכה בדפדפנים ישנים יותר */
+}
+
+/* הגדרת מצב התחלתי של גב הכרטיס */
+.flip-card-back {
+    /* מיקום גב הכרטיס מאחורי החזית */
+    transform: rotateY(180deg);
+}
+
+/* סיום הוספת CSS */

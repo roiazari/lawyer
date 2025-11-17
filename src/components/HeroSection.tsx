@@ -43,10 +43,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection, lawyerName, 
         onClick={() => scrollToSection('about')}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 group hover:scale-110 transition-transform duration-300"
       >
-        {/* <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2 group-hover:border-amber-300 transition-colors duration-300">
-          <div className="w-1.5 h-3 bg-white rounded-full animate-scroll group-hover:bg-amber-300 transition-colors duration-
-          300"></div>
-        </div> */}
+
 
               <ArrowDown className="animate-scroll  w-8 h-8 text-white group-hover:text-amber-300 transition-colors duration-300" />
       </button>

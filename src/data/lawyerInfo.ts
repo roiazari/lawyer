@@ -1,11 +1,11 @@
 import { Scale, Users, MapPin, Gavel, Handshake, Shield, BookOpen, Award, Landmark, Building2, FileText, Car, Home } from 'lucide-react';
 
 export const LAWYER_INFO = {
-  name: 'עו"ד סיגל קליין',
+  name: 'עו"ד דנה כהן',
   title: 'ייצוג משפטי מקצועי ומסור למען זכויותיך',
   contact: {
     phone: '542412474',
-    email: 'sigal@gamil.co.il',
+    email: 'dana_choen@gamil.co.il',
     address: 'רחוב הרצל 123, תל אביב',
   },
   hours: {

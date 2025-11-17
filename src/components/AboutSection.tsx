@@ -37,7 +37,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                     <div className="relative animate-slide-in-left">
                         <div className="aspect-square bg-gradient-to-br from-amber-700 to-amber-900 rounded-2xl shadow-2xl flex items-center justify-center">
                             <img
-                                src="/pic.png" // הנתיב לתמונה בתיקיית public
+                                src="./pic.png" // הנתיב לתמונה בתיקיית public
                                 alt="עורכת דין"
                                 className="w-full rounded-2xl h-full object-cover opacity-80" // שיניתי את העיצוב כדי להתאים לתמונה
                             />

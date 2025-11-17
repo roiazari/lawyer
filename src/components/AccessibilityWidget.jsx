@@ -61,7 +61,7 @@ export default function AccessibilityWidget() {
     return (
         <>
             <div
-                className="fixed bottom-[20px] right-[20px] z-50" // 👈 אלו הקלאסים שצריך לתקן
+                className="fixed bottom-[22px] right-[22px] z-50" // 👈 אלו הקלאסים שצריך לתקן
             >
                 <button
                     ref={btnRef}

@@ -55,6 +55,9 @@ const ContactSection: React.FC = () => {
             setIsSending(false);
         }
     };
+    
+    // 🛑 לוגיקה ליצירת לינק לגוגל מפות
+    const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`;
 
     return (
         <section id="contact" className="py-24 bg-white">
@@ -69,45 +72,58 @@ const ContactSection: React.FC = () => {
                         </p>
 
                         <div className="space-y-6">
-                            {/* פרטי קשר (טלפון) */}
-                            <div className="flex items-start gap-4 group">
+                            {/* פרטי קשר (טלפון) - כעת כל הבלוק לחיץ */}
+                            <a 
+                                href={`tel:${contact.phone}`} 
+                                className="flex items-start gap-4 group hover:no-underline cursor-pointer" // 🛑 עוטף את הכל ב-<a>
+                            >
                                 <div className="bg-amber-100 p-3 rounded-lg group-hover:bg-amber-200 transition-colors duration-300">
                                     <Phone className="w-6 h-6 text-amber-700" />
                                 </div>
                                 <div>
                                     <div className="font-semibold text-gray-900 mb-1">טלפון</div>
-                                    {/* 🛑 מוודאים שהקישור הוא ללא 0 ראשוני עבור טלפונים */}
-                                    <a href={`tel:0${contact.phone.replace(/^0/, '+972')}`} className="text-gray-600 hover:text-amber-700 transition-colors">
+                                    {/* 🛑 הפכתי ל-<span> כדי למנוע קינון <a> */}
+                                    <span className="text-gray-600 group-hover:text-amber-700 transition-colors">
                                         0{contact.phone}
-                                    </a>
+                                    </span>
                                 </div>
-                            </div>
+                            </a>
 
-                            {/* פרטי קשר (דוא"ל) */}
-                            <div className="flex items-start gap-4 group">
+                            {/* פרטי קשר (דוא"ל) - כעת כל הבלוק לחיץ */}
+                            <a 
+                                href={`mailto:${contact.email}`} 
+                                className="flex items-start gap-4 group hover:no-underline cursor-pointer" // 🛑 עוטף את הכל ב-<a>
+                            >
                                 <div className="bg-amber-100 p-3 rounded-lg group-hover:bg-amber-200 transition-colors duration-300">
                                     <Mail className="w-6 h-6 text-amber-700" />
                                 </div>
                                 <div>
                                     <div className="font-semibold text-gray-900 mb-1">דוא"ל</div>
-                                    <a href={`mailto:${contact.email}`} className="text-gray-600 hover:text-amber-700 transition-colors">
+                                    {/* 🛑 הפכתי ל-<span> כדי למנוע קינון <a> */}
+                                    <span className="text-gray-600 group-hover:text-amber-700 transition-colors">
                                         {contact.email}
-                                    </a>
+                                    </span>
                                 </div>
-                            </div>
+                            </a>
 
-                            {/* פרטי קשר (כתובת) */}
-                            <div className="flex items-start gap-4 group">
+                            {/* פרטי קשר (כתובת) - כעת כל הבלוק לחיץ ומנווט למפה */}
+                            <a 
+                                href={mapLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex items-start gap-4 group hover:no-underline cursor-pointer" // 🛑 עוטף את הכל ב-<a>
+                            >
                                 <div className="bg-amber-100 p-3 rounded-lg group-hover:bg-amber-200 transition-colors duration-300">
                                     <MapPin className="w-6 h-6 text-amber-700" />
                                 </div>
                                 <div>
                                     <div className="font-semibold text-gray-900 mb-1">כתובת</div>
-                                    <p className="text-gray-600">
+                                    {/* 🛑 הפכתי ל-<span> כדי למנוע קינון <a> */}
+                                    <span className="text-gray-600 group-hover:text-amber-700 transition-colors">
                                         {contact.address}
-                                    </p>
+                                    </span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         {/* שעות פעילות */}
